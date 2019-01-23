@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="schedule-console" version="3.0">
+
+	<!-- 将FORWARD请求全部转为get请求,用处是controller跳转jsp如果是put和delete就会出错,这里将他请求转为get请求就不会出错了 -->
+	<filter>
+		<filter-name>getMethodConvertingFilter</filter-name>
+		<filter-class>com.yr.filter.GetMethodConvertingFilter</filter-class>
+	</filter>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://www.springsecurity.org/jsp</taglib-uri>
+			<taglib-location>/WEB-INF/authorize.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+</web-app>

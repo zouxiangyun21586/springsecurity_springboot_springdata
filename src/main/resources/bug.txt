@@ -1,0 +1,19 @@
+Failed to register servlet with name 'dispatcher'. Check if there is another servlet registered under the same name.
+如果出现以上错误,那么检查一下自己的config配置是否配置了两份
+学习网址: https://blog.csdn.net/qq_42318281/article/details/80957261
+
+问题一 : 
+	如果遇到 springBoot Error resolving template "login" .. 异常, 那么就是 模板使用错误 ,jsp页面支持 freemarker模板
+问题二:
+	An Authentication object was not found in the SecurityContext (未找到身份验证对象) 多半是被拦截了(自定义的拦截掉了)
+问题三:
+	如果在WEB-INF下使用 jsp ,需进入controller才能进入jsp页面 ,而进入controller 后再跳入login.jsp时,
+		会被拦截,没有权限访问导致一直在login.jsp页面(暂时没找到解决方法所以使用模板是最简洁的方法(在templates下建立jsp)))
+				原因: springBoot 过滤掉了,WEB-INF无权访问(没找到设置放行WEB-INF下jsp权限的配置)
+问题四:
+	如果在数据库中添加权限后,访问时报 o.s.web.servlet.PageNotFound : Request method 'GET' not supported 错误,
+		代表它访问的路径方法与你数据库中设定的方法不一致,需去数据库中修改成它指定的方法
+問題五:
+	如果頁面一直進不去,並且控制臺出錯,將實體類中的雙向關聯關係刪除,單方面的有聯繫就好了
+問題六: 
+	如果問題五解決后報 java.util.Set 錯誤,那麼看看是否有set集合上沒有加上關聯關係的註解eg: @ManyToMany 等.. ,沒有就將此註解按你的要求寫上就OK了
